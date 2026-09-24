@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRUEBA DE TERCERO BÁSICO</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">PRUEBA DE TERCERO BÁSICO <small>Simulación educativa</small></header>
+<main>
+
+<!-- 1. INICIO -->
+<section id="s-start" class="screen active">
+  <h1>PRUEBA DE TERCERO BÁSICO</h1>
+  <h3 class="tag">SIMULACIÓN EDUCATIVA</h3>
+  <p>Esta aplicación es una práctica del procedimiento técnico de una evaluación en línea.</p>
+  <button class="btn" id="b-start">COMENZAR</button>
+</section>
+
+<!-- 2. CÓDIGO (solo en memoria) -->
+<section id="s-code" class="screen">
+  <h2>CÓDIGO DEL ESTUDIANTE</h2>
+  <input id="code" maxlength="20" autocomplete="off" placeholder="Escriba su código">
+  <p class="err" id="code-err"></p>
+  <button class="btn" id="b-code">CONTINUAR</button>
+</section>
+
+<!-- 3. CÁMARA -->
+<section id="s-cam" class="screen">
+  <h2>CÁMARA</h2>
+  <div class="stage"><video id="v-cam" autoplay playsinline muted></video><span class="live">CÁMARA EN VIVO</span></div>
+  <p id="cam-status" class="status">Esperando permiso de cámara…</p>
+  <button class="btn" id="b-cam" disabled>CONTINUAR</button>
+</section>
+
+<!-- 4-7. FOTOS Y DOCUMENTO (pantalla reutilizable) -->
+<section id="s-photo" class="screen">
+  <h2 id="ph-title"></h2>
+  <p id="ph-text"></p>
+  <div class="stage">
+    <video id="v-photo" autoplay playsinline muted></video>
+    <div id="guide" class="guide hidden">COLOQUE EL OBJETO AQUÍ</div>
+    <canvas id="cv" class="hidden"></canvas>
+  </div>
+  <div class="row">
+    <button class="btn" id="b-snap"></button>
+    <button class="btn alt hidden" id="b-retry">REPETIR</button>
+    <button class="btn hidden" id="b-accept">ACEPTAR</button>
+  </div>
+</section>
+
+<!-- 8. MENÚ -->
+<section id="s-menu" class="screen">
+  <h1>PRUEBA DE TERCERO BÁSICO</h1>
+  <p>Seleccione el área que desea realizar.</p>
+  <div class="row">
+    <button class="btn big" id="m-mate">MATEMÁTICA</button>
+    <button class="btn big" id="m-lang">COMUNICACIÓN Y LENGUAJE</button>
+  </div>
+</section>
+
+<!-- 9-10. VERIFICACIÓN PREVIA -->
+<section id="s-pre" class="screen">
+  <h2>VERIFICACIÓN PREVIA</h2>
+  <p>Antes de iniciar esta sección debe completar nuevamente la verificación fotográfica.</p>
+  <button class="btn" id="b-pre">COMENZAR VERIFICACIÓN</button>
+</section>
+<section id="s-ready" class="screen">
+  <h2>VERIFICACIÓN COMPLETADA</h2>
+  <button class="btn" id="b-ready"></button>
+</section>
+
+<!-- 11-12. PREGUNTAS -->
+<section id="s-quiz" class="screen">
+  <div class="mini-wrap"><video id="v-mini" class="mini" autoplay playsinline muted></video><small>CÁMARA LIVE</small></div>
+  <h2 id="q-num"></h2>
+  <blockquote id="q-pass" class="hidden"></blockquote>
+  <p id="q-text" class="qtext"></p>
+  <div id="q-opts"></div>
+  <p id="det-note" class="status hidden">El detector de orientación no pudo cargarse (¿sin Internet?). La prueba continúa sin él.</p>
+  <div class="row">
+    <button class="btn alt" id="b-prev">ANTERIOR</button>
+    <button class="btn" id="b-next">SIGUIENTE</button>
+  </div>
+</section>
+
+<!-- 19-20. RESULTADO DE ÁREA -->
+<section id="s-result" class="screen">
+  <h2 id="r-title"></h2>
+  <div id="r-body" class="score"></div>
+  <p>Este resultado pertenece únicamente a esta simulación.</p>
+  <div class="row">
+    <button class="btn alt" id="r-menu">VOLVER AL MENÚ</button>
+    <button class="btn hidden" id="r-other"></button>
+    <button class="btn hidden" id="r-final">VER RESULTADO FINAL</button>
+  </div>
+</section>
+
+<!-- 21. RESULTADO FINAL -->
+<section id="s-final" class="screen">
+  <h1>PRUEBA DE TERCERO BÁSICO</h1>
+  <h2>SIMULACIÓN COMPLETADA</h2>
+  <div id="f-body" class="score"></div>
+  <button class="btn alt" id="b-restart">NUEVA SIMULACIÓN</button>
+</section>
+</main>
+
+<!-- 14-16. ADVERTENCIA (cuenta regresiva) -->
+<div id="warn" class="overlay hidden">
+  <h1>⚠️ ADVERTENCIA</h1>
+  <p id="warn-msg" class="big"></p>
+  <div id="warn-count" class="count">3</div>
+</div>
+
+<!-- 15. PAUSA / VERIFICACIÓN REQUERIDA -->
+<div id="pause" class="overlay hidden">
+  <h1>⚠️ VERIFICACIÓN REQUERIDA</h1>
+  <p class="big">Debe volver a colocarse correctamente frente a la cámara.</p>
+  <p>La prueba está en pausa. Regresará a la misma pregunta.</p>
+  <button class="btn" id="b-pause">REALIZAR VERIFICACIÓN</button>
+</div>
+
+<!-- MARCA DE AGUA: para cambiar el texto, edite esta línea (estilo en style.css, clase .watermark) -->
+<div class="watermark">Desarrollado por: HazonC.</div>
+
+<script src="script.js"></script>
+</body>
+</html>
